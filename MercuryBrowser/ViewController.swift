@@ -10,11 +10,84 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var imageview: UIImageView!
+    
+    let urlString = "https://raw.githubusercontent.com/rmirabelli/mercuryserver/master/mercury.json"
+       
+       struct MercuryList: Codable {
+           var mercury: [MercuryObject]
+       }
+       struct MercuryObject: Codable {
+           var name: String
+           var type: String
+           var images: String
+       }
+       
+       var objects: [MercuryObject] = []
+       
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let request = URLRequest(url: URL(string: urlString)!)
+                          let session = URLSession(configuration: .ephemeral)
+                          let task = session.dataTask(with: request) {(data, response, error) in
+                              print(String(data:data!, encoding: .utf8)!)
+                              let list = try! JSONDecoder().decode(MercuryList.self, from: data!)
+                              print(list.mercury.count)
+                              for b in list.mercury{
+                                  print(b)
+                                      }
+                              self.objects = list.mercury
+                              self.tableview.reloadData()
+                              self.tableview.dataSource = self
+                          }
+                          task.resume()
+                          self.getImage(for: URL(string: urlString)!) { (URL, UIImage) in
+                              print(self.imageview!)
+                          }
+                      }
+        
     }
 
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return objects.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let number = objects[indexPath.item]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MercuryCell", for: indexPath)
+               if let numberCell = cell as? MercuryCell {
+                numberCell.mercurycell.text = "\(number)"
+               }
+               return cell
+           }
+    
+    func getImage(for url: URL, completion: @escaping ((URL, UIImage) -> Void)) {
+    // download the image, and call the completion with the url and image.
+    // the cell can then verify that the image being returned is the one
+    // requested.
+    // you may even keep a dictionary of results, and then call the completion
+    // with an entry from that dictionary, if one exists, otherwise make the
+    // network call and store its result in the dictionary as well as calling
+    // the completion. This would allow the _second_ call for any image to not
+    // perform a network operation!
+    let session = URLSession(configuration: .ephemeral)
+    let task = session.dataTask(with: url) { (data, response, error) in
+        let list = try! JSONDecoder().decode(MercuryList.self, from: data!)
+        print(list.mercury.count)
+       if let data = data {
+           let image = UIImage(data: data)
+           DispatchQueue.main.async {
+               self.imageview.image = image
+           }
+        }
+    }
+    task.resume()
+}
 
 }
 

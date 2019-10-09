@@ -22,7 +22,7 @@ class ViewController: UIViewController {
        struct MercuryObject: Codable {
            var name: String
            var type: String
-           var images: String
+           var url: String
        }
        
        var objects: [MercuryObject] = []
@@ -41,13 +41,9 @@ class ViewController: UIViewController {
                                   print(b)
                                       }
                               self.objects = list.mercury
-                              self.tableview.reloadData()
-                              self.tableview.dataSource = self
                           }
                           task.resume()
-                          self.getImage(for: URL(string: urlString)!) { (URL, UIImage) in
-                              print(self.imageview!)
-                          }
+                          tableview.dataSource = self
                       }
         
     }
@@ -82,7 +78,8 @@ extension ViewController: UITableViewDataSource {
        if let data = data {
            let image = UIImage(data: data)
            DispatchQueue.main.async {
-               self.imageview.image = image
+            self.imageview.image = image
+            self.tableview.reloadData()
            }
         }
     }

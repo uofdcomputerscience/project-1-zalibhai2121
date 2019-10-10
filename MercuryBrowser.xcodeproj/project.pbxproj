@@ -15,6 +15,7 @@
 		46F1B4B0234150FC00DF2896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F1B4AE234150FC00DF2896 /* LaunchScreen.storyboard */; };
 		46F1B4B82341511500DF2896 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 46F1B4B72341511500DF2896 /* README.md */; };
 		5123C99F234E5443003249D9 /* MercuryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5123C99E234E5443003249D9 /* MercuryCell.swift */; };
+		51CC884B234FF23D000A8032 /* getImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC884A234FF23D000A8032 /* getImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		46F1B4B1234150FC00DF2896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46F1B4B72341511500DF2896 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5123C99E234E5443003249D9 /* MercuryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MercuryCell.swift; sourceTree = "<group>"; };
+		51CC884A234FF23D000A8032 /* getImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				46F1B4A3234150FA00DF2896 /* AppDelegate.swift */,
 				46F1B4A5234150FA00DF2896 /* SceneDelegate.swift */,
 				46F1B4A7234150FA00DF2896 /* ViewController.swift */,
+				51CC884A234FF23D000A8032 /* getImage.swift */,
 				46F1B4A9234150FA00DF2896 /* Main.storyboard */,
 				5123C99E234E5443003249D9 /* MercuryCell.swift */,
 				46F1B4AC234150FC00DF2896 /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46F1B4A8234150FA00DF2896 /* ViewController.swift in Sources */,
+				51CC884B234FF23D000A8032 /* getImage.swift in Sources */,
 				46F1B4A4234150FA00DF2896 /* AppDelegate.swift in Sources */,
 				46F1B4A6234150FA00DF2896 /* SceneDelegate.swift in Sources */,
 				5123C99F234E5443003249D9 /* MercuryCell.swift in Sources */,

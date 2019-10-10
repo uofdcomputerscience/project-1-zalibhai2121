@@ -85,7 +85,7 @@ extension ViewController: UITableViewDataSource {
        if let data = data {
            var image = UIImage(data: data)
            DispatchQueue.main.async {
-            image = image
+            MercuryCell().mercuryImafe.image = image
            }
         }
     }

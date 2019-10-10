@@ -11,5 +11,7 @@ import UIKit
 class MercuryCell: UITableViewCell {
     
     @IBOutlet weak var mercurycell: UILabel!
+    @IBOutlet weak var mercurycell2: UILabel!
+    @IBOutlet weak var mercuryImage: UIImage!
     
 }

@@ -43,7 +43,7 @@ class ViewController: UIViewController {
                               self.objects = list.mercury
                           }
                           task.resume()
-                          tableview.dataSource = self
+                          tableView.dataSource = self
                       }
         
     }

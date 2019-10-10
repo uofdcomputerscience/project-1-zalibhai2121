@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  MercuryBrowser
+//  MercuryProject
 //
-//  Created by Russell Mirabelli on 9/29/19.
-//  Copyright © 2019 Russell Mirabelli. All rights reserved.
+//  Created by Zainab Alibhai on 10/10/19.
+//  Copyright © 2019 Zainab Alibhai. All rights reserved.
 //
 
 import UIKit

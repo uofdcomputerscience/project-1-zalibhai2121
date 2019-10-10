@@ -10,8 +10,7 @@ import UIKit
 
 class MercuryCell: UITableViewCell {
     
+    @IBOutlet weak var type: UILabel!
     @IBOutlet weak var mercurycell: UILabel!
-    @IBOutlet weak var mercurycell2: UILabel!
-    @IBOutlet weak var mercuryImage: UIImage!
-    
+    @IBOutlet weak var mercuryImafe: UIImageView!
 }

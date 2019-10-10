@@ -1,52 +1,54 @@
 //
 //  ViewController.swift
-//  MercuryBrowser
+//  MercuryProject
 //
-//  Created by Russell Mirabelli on 9/29/19.
-//  Copyright © 2019 Russell Mirabelli. All rights reserved.
+//  Created by Zainab Alibhai on 10/10/19.
+//  Copyright © 2019 Zainab Alibhai. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
 
-    
-    @IBOutlet weak var tableview: UITableView!
-    @IBOutlet weak var imageview: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     
     let urlString = "https://raw.githubusercontent.com/rmirabelli/mercuryserver/master/mercury.json"
+          
+    struct MercuryList: Codable {
+        var mercury: [MercuryObject]
+    }
+    struct MercuryObject: Codable {
+        var name: String
+        var type: String
+        var url: String
+    }
+        
+    var objects: [MercuryObject] = []
+          
        
-       struct MercuryList: Codable {
-           var mercury: [MercuryObject]
-       }
-       struct MercuryObject: Codable {
-           var name: String
-           var type: String
-           var url: String
-       }
-       
-       var objects: [MercuryObject] = []
-       
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let request = URLRequest(url: URL(string: urlString)!)
-                          let session = URLSession(configuration: .ephemeral)
-                          let task = session.dataTask(with: request) {(data, response, error) in
-                              print(String(data:data!, encoding: .utf8)!)
-                              let list = try! JSONDecoder().decode(MercuryList.self, from: data!)
-                              print(list.mercury.count)
-                              for b in list.mercury{
-                                  print(b)
-                                      }
-                              self.objects = list.mercury
-                          }
-                          task.resume()
-                          tableView.dataSource = self
-                      }
-        
-    }
+        let session = URLSession(configuration: .ephemeral)
+        let task = session.dataTask(with: request) {(data, response, error) in
+                print(String(data:data!, encoding: .utf8)!)
+                let list = try! JSONDecoder().decode(MercuryList.self, from: data!)
+                        print(list.mercury.count)
+                        for b in list.mercury{
+                            print(b)
+                    }
+                self.objects = list.mercury
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+            }
+        }
+                task.resume()
+                tableView.dataSource = self
+            }
+            
+        }
+
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,13 +56,20 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let number = objects[indexPath.item]
+        let mercucycell = objects[indexPath.item]
         let cell = tableView.dequeueReusableCell(withIdentifier: "MercuryCell", for: indexPath)
-               if let numberCell = cell as? MercuryCell {
-                numberCell.mercurycell.text = "\(number)"
-               }
+        if let mercuryCell = cell as? MercuryCell {
+            mercuryCell.mercurycell.text = "\(mercucycell)"
+            mercuryCell.type.text = "\(mercucycell)"
+            self.getImage(for: URL(string: mercucycell.url)!) { (url, image) in
+                DispatchQueue.main.async {
+                    mercuryCell.mercuryImafe.image = image
+                }
+            }
+            
+        }
                return cell
-           }
+    }
     
     func getImage(for url: URL, completion: @escaping ((URL, UIImage) -> Void)) {
     // download the image, and call the completion with the url and image.
@@ -73,13 +82,10 @@ extension ViewController: UITableViewDataSource {
     // perform a network operation!
     let session = URLSession(configuration: .ephemeral)
     let task = session.dataTask(with: url) { (data, response, error) in
-        let list = try! JSONDecoder().decode(MercuryList.self, from: data!)
-        print(list.mercury.count)
        if let data = data {
-           let image = UIImage(data: data)
+           var image = UIImage(data: data)
            DispatchQueue.main.async {
-            self.imageview.image = image
-            self.tableview.reloadData()
+            image = image
            }
         }
     }
@@ -87,4 +93,3 @@ extension ViewController: UITableViewDataSource {
 }
 
 }
-

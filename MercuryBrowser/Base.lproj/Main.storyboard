@@ -26,31 +26,37 @@
                                             <rect key="frame" x="0.0" y="0.0" width="394" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4h-TN-WcH">
-                                                    <rect key="frame" x="176" y="11.5" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Eu-fx-gyZ" userLabel="name">
+                                                    <rect key="frame" x="62" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJI-k5-gAj">
-                                                    <rect key="frame" x="176" y="11" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCb-3O-Umg" userLabel="type">
+                                                    <rect key="frame" x="285" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9q-Yz-PGM">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CmM-Ty-Dkh">
                                                     <rect key="frame" x="77" y="-43" width="240" height="128"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="t4h-TN-WcH" firstAttribute="centerY" secondItem="j9u-lz-A9S" secondAttribute="centerY" id="apc-7H-WBj"/>
-                                                <constraint firstItem="t4h-TN-WcH" firstAttribute="centerX" secondItem="j9u-lz-A9S" secondAttribute="centerX" id="hYd-Eu-bme"/>
-                                            </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="CmM-Ty-Dkh" firstAttribute="leading" secondItem="4Ew-78-cF3" secondAttribute="leading" constant="77" id="FQW-qe-OFo"/>
+                                            <constraint firstItem="XCb-3O-Umg" firstAttribute="top" secondItem="4Ew-78-cF3" secondAttribute="top" constant="11" id="H4L-O3-23r"/>
+                                            <constraint firstItem="4Eu-fx-gyZ" firstAttribute="leading" secondItem="4Ew-78-cF3" secondAttribute="leading" constant="62" id="Oog-Ny-J5m"/>
+                                            <constraint firstAttribute="trailing" secondItem="XCb-3O-Umg" secondAttribute="trailing" constant="67" id="bpc-A7-kfM"/>
+                                            <constraint firstAttribute="trailing" secondItem="CmM-Ty-Dkh" secondAttribute="trailing" constant="77" id="eER-ce-DmV"/>
+                                            <constraint firstItem="CmM-Ty-Dkh" firstAttribute="top" secondItem="4Ew-78-cF3" secondAttribute="top" constant="-43" id="j1G-eI-AyA"/>
+                                            <constraint firstAttribute="bottom" secondItem="4Eu-fx-gyZ" secondAttribute="bottom" constant="11.5" id="ulg-hk-75J"/>
+                                            <constraint firstAttribute="bottom" secondItem="CmM-Ty-Dkh" secondAttribute="bottom" constant="-41.5" id="whE-YH-U5X"/>
+                                        </constraints>
                                         <connections>
-                                            <outlet property="mercurycell" destination="t4h-TN-WcH" id="FCe-BB-Y3r"/>
+                                            <outlet property="mercuryImafe" destination="CmM-Ty-Dkh" id="xJX-Qp-bql"/>
+                                            <outlet property="mercurycell" destination="4Eu-fx-gyZ" id="lK9-1Y-HHw"/>
+                                            <outlet property="type" destination="XCb-3O-Umg" id="4mR-sx-Lva"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
